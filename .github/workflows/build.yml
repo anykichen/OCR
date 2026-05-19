@@ -15,12 +15,12 @@ jobs:
       with:
         dotnet-version: '6.0.x'
 
-    - name: Build EXE
+    - name: Build & Publish
       run: |
         dotnet publish OcrTcpToKeyboard2.csproj -c Release -r win-x64 --self-contained true -p:PublishSingleFile=true
 
-    - name: Upload
+    - name: Upload EXE
       uses: actions/upload-artifact@v4
       with:
         name: OcrTcpToKeyboard
-        path: bin/Release/net6.0/win-x64/publish/OcrTcpToKeyboard2.exe
+        path: bin/Release/**/publish/
